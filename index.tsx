@@ -1,9 +1,8 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { OrderProvider } from './context/OrderContext';
 import { CartProvider } from './context/CartContext';
+import { OrderProvider } from './context/OrderContext';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../constants';
@@ -8,7 +7,6 @@ const DishDetailPage: React.FC = () => {
   const { dishId } = useParams<{ dishId: string }>();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
 
   const dish = MENU_ITEMS.find(item => item.id === dishId);
 
@@ -25,12 +23,9 @@ const DishDetailPage: React.FC = () => {
   }
 
   const handleAddToCart = () => {
-    // The addToCart in context adds one item, so we loop to add the selected quantity
     for (let i = 0; i < quantity; i++) {
         addToCart(dish);
     }
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000); // Reset button state after 2 seconds
   };
 
   return (
@@ -52,18 +47,26 @@ const DishDetailPage: React.FC = () => {
                 <p className="text-lg text-gray-700 mt-6 leading-relaxed">
                     {dish.detailedDescription || dish.description}
                 </p>
-
-                <div className="mt-10 flex items-center gap-4">
+                
+                <div className="mt-10 flex items-center gap-6">
+                    {/* Quantity Selector */}
                     <div className="flex items-center border border-gray-300 rounded-md">
-                        <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-l-md transition">-</button>
-                        <input type="text" readOnly value={quantity} className="w-14 text-center font-bold text-lg bg-transparent border-x border-gray-300 py-3" />
-                        <button onClick={() => setQuantity(quantity + 1)} className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-r-md transition">+</button>
+                        <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="px-4 py-3 text-lg font-bold text-gray-700 hover:bg-gray-100 rounded-l-md">-</button>
+                        <input 
+                            type="number"
+                            value={quantity}
+                            readOnly
+                            className="w-16 text-center font-bold text-lg border-x border-gray-300 focus:outline-none bg-white"
+                        />
+                        <button onClick={() => setQuantity(q => q + 1)} className="px-4 py-3 text-lg font-bold text-gray-700 hover:bg-gray-100 rounded-r-md">+</button>
                     </div>
+
+                    {/* Add to Cart Button */}
                     <button
                         onClick={handleAddToCart}
-                        className={`w-full text-black font-bold py-4 px-4 rounded-md transition-colors text-lg ${added ? 'bg-emerald-500' : 'bg-gold hover:bg-yellow-500'}`}
+                        className="flex-grow bg-gold text-black font-bold py-4 px-8 rounded-md text-lg hover:bg-yellow-500 transition-all transform hover:scale-105 duration-300"
                     >
-                        {added ? 'Added!' : 'Add to Cart'}
+                        Add to Cart
                     </button>
                 </div>
             </div>
