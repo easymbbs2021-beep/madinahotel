@@ -4,7 +4,7 @@ import React from 'react';
 const TermsPage: React.FC = () => {
   return (
     <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto prose prose-invert prose-p:text-gray-300 prose-h2:text-gold prose-h1:text-white">
+      <div className="max-w-4xl mx-auto prose prose-p:text-gray-600 prose-h2:text-gold prose-h1:text-gray-900">
         <h1>Terms and Conditions</h1>
         <p><em>Last Updated: {new Date().toLocaleDateString()}</em></p>
         

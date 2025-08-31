@@ -108,8 +108,8 @@ const TrackOrderPage: React.FC = () => {
     return (
         <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-                <h1 className="text-5xl font-display text-white">Track Your Order</h1>
-                <p className="text-gray-400 mt-2">Order ID: <span className="font-mono">{order.id}</span></p>
+                <h1 className="text-5xl font-display text-gray-900">Track Your Order</h1>
+                <p className="text-gray-600 mt-2">Order ID: <span className="font-mono">{order.id}</span></p>
                  {eta !== null && order.status !== OrderStatus.DELIVERED && (
                     <p className="mt-4 text-2xl font-bold text-gold">
                         Estimated Arrival: {eta > 0 ? `~${eta} mins` : 'Arriving now!'}
@@ -117,14 +117,14 @@ const TrackOrderPage: React.FC = () => {
                 )}
             </div>
 
-            <div className="max-w-5xl mx-auto bg-[#2C2C2C] p-8 sm:p-12 rounded-lg border border-gray-700/50">
+            <div className="max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-lg border border-gray-200">
                 {/* Status Stepper */}
                 <div className="mb-12 overflow-x-auto pb-4">
                     <div className="flex items-center min-w-max">
                         {statusSteps.map((status, index) => (
                             <React.Fragment key={status}>
                                 <div className="flex flex-col items-center text-center w-32">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${index <= currentStatusIndex && !isDeliveryFailed ? 'bg-gold border-gold text-black' : 'bg-transparent border-gray-600 text-gray-400'}`}>
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${index <= currentStatusIndex && !isDeliveryFailed ? 'bg-gold border-gold text-black' : 'bg-transparent border-gray-300 text-gray-500'}`}>
                                       {index < currentStatusIndex && !isDeliveryFailed ? (
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                                       ) : (
@@ -134,7 +134,7 @@ const TrackOrderPage: React.FC = () => {
                                     <p className={`text-xs md:text-sm mt-2 transition-colors duration-500 ${index <= currentStatusIndex && !isDeliveryFailed ? 'font-semibold text-gold' : 'text-gray-500'}`}>{status}</p>
                                 </div>
                                 {index < statusSteps.length - 1 && (
-                                    <div className={`flex-1 h-1 transition-colors duration-500 ${index < currentStatusIndex && !isDeliveryFailed ? 'bg-gold' : 'bg-gray-700'}`}></div>
+                                    <div className={`flex-1 h-1 transition-colors duration-500 ${index < currentStatusIndex && !isDeliveryFailed ? 'bg-gold' : 'bg-gray-200'}`}></div>
                                 )}
                             </React.Fragment>
                         ))}
@@ -146,7 +146,7 @@ const TrackOrderPage: React.FC = () => {
                 </div>
                 
                 {isDeliveryFailed && (
-                    <div className="text-center bg-red-900/50 border border-red-700 text-red-300 px-4 py-4 rounded-lg relative mb-8" role="alert">
+                    <div className="text-center bg-red-100 border border-red-400 text-red-700 px-4 py-4 rounded-lg relative mb-8" role="alert">
                         <strong className="font-bold text-lg">Delivery Booking Failed!</strong>
                         <p className="mt-1">We couldn't book a driver automatically. Our team has been notified and will retry shortly. Thank you for your patience.</p>
                     </div>
@@ -154,26 +154,26 @@ const TrackOrderPage: React.FC = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                     <div>
-                        <h3 className="text-2xl font-display mb-4 text-white">Order Summary</h3>
+                        <h3 className="text-2xl font-display mb-4 text-gray-900">Order Summary</h3>
                         <ul className="space-y-3">
                             {order.items.map(item => (
-                                <li key={item.id} className="flex justify-between text-gray-300">
+                                <li key={item.id} className="flex justify-between text-gray-700">
                                     <span>{item.name} <span className="text-gray-500">x {item.quantity}</span></span>
                                     <span className="font-medium">₹{(item.price * item.quantity).toFixed(2)}</span>
                                 </li>
                             ))}
                         </ul>
-                        <hr className="my-4 border-gray-700/50" />
-                        <p className="flex justify-between font-bold text-lg text-white">
+                        <hr className="my-4 border-gray-200" />
+                        <p className="flex justify-between font-bold text-lg text-gray-900">
                             <span>Total</span>
                             <span className="text-gold">₹{order.total.toFixed(2)}</span>
                         </p>
                     </div>
 
                     <div>
-                        <h3 className="text-2xl font-display mb-4 text-white">Delivery Details</h3>
+                        <h3 className="text-2xl font-display mb-4 text-gray-900">Delivery Details</h3>
                         {order.deliveryInfo ? (
-                             <div className="space-y-2 text-gray-300">
+                             <div className="space-y-2 text-gray-700">
                                 <p><strong>Driver:</strong> {order.deliveryInfo.driverName}</p>
                                 <p><strong>Phone:</strong> {order.deliveryInfo.driverPhone}</p>
                                 <p><strong>Vehicle:</strong> {order.deliveryInfo.vehicleNumber}</p>
@@ -181,7 +181,7 @@ const TrackOrderPage: React.FC = () => {
                         ) : (
                             <p className="text-gray-500">Driver not assigned yet.</p>
                         )}
-                        <p className="mt-4 text-gray-300"><strong>Deliver to:</strong> {order.customer.address}</p>
+                        <p className="mt-4 text-gray-700"><strong>Deliver to:</strong> {order.customer.address}</p>
                     </div>
                 </div>
             </div>

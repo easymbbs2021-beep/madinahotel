@@ -7,7 +7,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
         {[...Array(5)].map((_, index) => (
             <svg
                 key={index}
-                className={`w-5 h-5 ${index < rating ? 'text-gold' : 'text-gray-600'}`}
+                className={`w-5 h-5 ${index < rating ? 'text-gold' : 'text-gray-300'}`}
                 fill="currentColor"
                 viewBox="0 0 20 20"
             >
@@ -21,22 +21,22 @@ const ReviewsPage: React.FC = () => {
     return (
         <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-                <h1 className="text-5xl font-display text-white">Guest Testimonials</h1>
-                <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">We are honored to share the experiences of our valued guests. Their words are a testament to the legacy we uphold.</p>
+                <h1 className="text-5xl font-display text-gray-900">Guest Testimonials</h1>
+                <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">We are honored to share the experiences of our valued guests. Their words are a testament to the legacy we uphold.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {TESTIMONIALS.map((testimonial) => (
                     <div 
                         key={testimonial.id} 
-                        className="bg-[#2C2C2C] p-8 rounded-lg border border-gray-700/50 shadow-lg shadow-black/20 flex flex-col"
+                        className="bg-white p-8 rounded-lg border border-gray-200 shadow-lg flex flex-col"
                     >
                         <div className="flex-grow">
-                            <p className="text-gray-300 italic">"{testimonial.review}"</p>
+                            <p className="text-gray-700 italic">"{testimonial.review}"</p>
                         </div>
-                        <div className="mt-6 pt-6 border-t border-gray-700/50">
+                        <div className="mt-6 pt-6 border-t border-gray-200">
                             <div className="flex items-center justify-between">
-                                <p className="font-bold text-lg text-white">- {testimonial.name}</p>
+                                <p className="font-bold text-lg text-gray-900">- {testimonial.name}</p>
                                 <StarRating rating={testimonial.stars} />
                             </div>
                         </div>

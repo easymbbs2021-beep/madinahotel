@@ -37,20 +37,20 @@ const CheckoutPage: React.FC = () => {
 
   return (
     <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-5xl font-display text-center mb-12 text-white">Checkout</h1>
+      <h1 className="text-5xl font-display text-center mb-12 text-gray-900">Checkout</h1>
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
         {/* Order Summary */}
-        <div className="lg:col-span-3 bg-[#2C2C2C] p-8 rounded-lg border border-gray-700/50">
-          <h2 className="text-3xl font-display mb-6 text-white">Your Order</h2>
+        <div className="lg:col-span-3 bg-white p-8 rounded-lg border border-gray-200">
+          <h2 className="text-3xl font-display mb-6 text-gray-900">Your Order</h2>
           {cartItems.length > 0 ? (
             <div className="space-y-5">
               {cartItems.map(item => (
-                <div key={item.id} className="flex items-center justify-between border-b border-gray-700/50 pb-5 last:border-b-0">
+                <div key={item.id} className="flex items-center justify-between border-b border-gray-200 pb-5 last:border-b-0">
                   <div className="flex items-center">
                     <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-lg mr-5" />
                     <div>
-                      <p className="font-bold text-lg text-white">{item.name}</p>
-                      <p className="text-sm text-gray-400">₹{item.price.toFixed(2)}</p>
+                      <p className="font-bold text-lg text-gray-900">{item.name}</p>
+                      <p className="text-sm text-gray-600">₹{item.price.toFixed(2)}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -58,10 +58,10 @@ const CheckoutPage: React.FC = () => {
                       type="number"
                       value={item.quantity}
                       onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                      className="w-16 p-2 bg-[#1C1C1C] border border-gray-600 rounded-md text-center focus:ring-2 focus:ring-gold focus:border-gold"
+                      className="w-16 p-2 bg-gray-100 border border-gray-300 rounded-md text-center focus:ring-2 focus:ring-gold focus:border-gold"
                       min="1"
                     />
-                    <button onClick={() => removeFromCart(item.id)} className="text-gray-500 hover:text-red-500 transition-colors">
+                    <button onClick={() => removeFromCart(item.id)} className="text-gray-400 hover:text-red-500 transition-colors">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clipRule="evenodd" />
                       </svg>
@@ -69,35 +69,35 @@ const CheckoutPage: React.FC = () => {
                   </div>
                 </div>
               ))}
-              <div className="text-right font-bold text-2xl mt-6 pt-4 border-t border-gray-700/50">
+              <div className="text-right font-bold text-2xl mt-6 pt-4 border-t border-gray-200">
                 Total: <span className="text-gold">₹{cartTotal.toFixed(2)}</span>
               </div>
             </div>
           ) : (
-            <p className="text-gray-400 py-10 text-center">Your cart is empty.</p>
+            <p className="text-gray-500 py-10 text-center">Your cart is empty.</p>
           )}
         </div>
 
         {/* Customer Details Form */}
-        <div className="lg:col-span-2 bg-[#2C2C2C] p-8 rounded-lg border border-gray-700/50">
-          <h2 className="text-3xl font-display mb-6 text-white">Delivery Details</h2>
+        <div className="lg:col-span-2 bg-white p-8 rounded-lg border border-gray-200">
+          <h2 className="text-3xl font-display mb-6 text-gray-900">Delivery Details</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
-              <input type="text" id="name" name="name" value={customer.name} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-[#1C1C1C] border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input type="text" id="name" name="name" value={customer.name} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
-              <input type="tel" id="phone" name="phone" value={customer.phone} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-[#1C1C1C] border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <input type="tel" id="phone" name="phone" value={customer.phone} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
             </div>
             <div>
-              <label htmlFor="address" className="block text-sm font-medium text-gray-300 mb-1">Address</label>
-              <input type="text" id="address" name="address" value={customer.address} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-[#1C1C1C] border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
+              <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Address</label>
+              <input type="text" id="address" name="address" value={customer.address} onChange={handleInputChange} required className="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold" />
             </div>
             <button
               type="submit"
               disabled={isProcessing || cartItems.length === 0}
-              className="w-full bg-gold text-black font-bold py-4 px-4 rounded-md hover:bg-yellow-500 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors text-lg flex items-center justify-center"
+              className="w-full bg-gold text-black font-bold py-4 px-4 rounded-md hover:bg-yellow-500 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors text-lg flex items-center justify-center"
             >
               {isProcessing ? <Spinner className="w-7 h-7" /> : `Place Order (₹${cartTotal.toFixed(2)})`}
             </button>

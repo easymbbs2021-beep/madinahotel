@@ -32,8 +32,8 @@ const MenuPage: React.FC = () => {
 
   return (
     <div className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-5xl font-display text-center mb-4 text-white">Our Menu</h1>
-      <p className="text-center text-lg text-gray-400 mb-12 max-w-2xl mx-auto">Discover a symphony of flavors, where every dish tells a story of Hyderabadi tradition.</p>
+      <h1 className="text-5xl font-display text-center mb-4 text-gray-900">Our Menu</h1>
+      <p className="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Discover a symphony of flavors, where every dish tells a story of Hyderabadi tradition.</p>
 
       {/* Search and Filters */}
       <div className="mb-12">
@@ -43,7 +43,7 @@ const MenuPage: React.FC = () => {
                 placeholder="Search for a dish..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-5 py-3 bg-[#2C2C2C] border border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition text-white"
+                className="w-full px-5 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition text-gray-900"
             />
         </div>
         <div className="flex justify-center flex-wrap gap-3 md:gap-4">
@@ -54,7 +54,7 @@ const MenuPage: React.FC = () => {
                 className={`px-5 py-2 text-sm md:text-base font-semibold rounded-md transition-all duration-300 border-2 ${
                 selectedCategory === category
                     ? 'bg-gold text-black border-gold'
-                    : 'bg-transparent text-gray-300 border-gray-600 hover:border-gold hover:text-gold'
+                    : 'bg-transparent text-gray-700 border-gray-300 hover:border-gold hover:text-gold'
                 }`}
             >
                 {category}
@@ -73,7 +73,7 @@ const MenuPage: React.FC = () => {
           ))
         ) : (
           <div className="col-span-full text-center py-20">
-            <h3 className="text-2xl font-semibold text-gray-300">No Dishes Found</h3>
+            <h3 className="text-2xl font-semibold text-gray-700">No Dishes Found</h3>
             <p className="text-gray-500 mt-2">Try adjusting your search or filters.</p>
           </div>
         )}

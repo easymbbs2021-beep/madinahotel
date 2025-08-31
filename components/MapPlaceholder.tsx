@@ -7,12 +7,12 @@ interface MapPlaceholderProps {
 
 const MapPlaceholder: React.FC<MapPlaceholderProps> = ({ driverPosition }) => {
   return (
-    <div className="relative w-full h-64 md:h-80 bg-amber-50 rounded-lg overflow-hidden border-2 border-amber-200">
+    <div className="relative w-full h-64 md:h-80 bg-gray-100 rounded-lg overflow-hidden border-2 border-gold/30">
       {/* Mock map texture */}
       <svg width="100%" height="100%" className="absolute inset-0">
         <defs>
           <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e7d8b7" strokeWidth="0.5"/>
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e0e0e0" strokeWidth="0.5"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -20,17 +20,17 @@ const MapPlaceholder: React.FC<MapPlaceholderProps> = ({ driverPosition }) => {
       
       {/* Route Line */}
       <svg width="100%" height="100%" className="absolute inset-0">
-        <line x1="15%" y1="80%" x2="85%" y2="20%" stroke="#a16207" strokeWidth="3" strokeDasharray="8 4" />
+        <line x1="15%" y1="80%" x2="85%" y2="20%" stroke="#D4AF37" strokeWidth="3" strokeDasharray="8 4" />
       </svg>
 
       {/* Restaurant Icon */}
       <div className="absolute top-[80%] left-[15%] -translate-x-1/2 -translate-y-1/2 text-center">
-        <div className="bg-slate-800 text-white p-2 rounded-full shadow-lg">
+        <div className="bg-gray-700 text-white p-2 rounded-full shadow-lg">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
         </div>
-        <span className="text-xs font-bold text-slate-700 mt-1 block">Restaurant</span>
+        <span className="text-xs font-bold text-gray-700 mt-1 block">Restaurant</span>
       </div>
 
       {/* Home Icon */}

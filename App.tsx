@@ -20,9 +20,9 @@ import TermsPage from './pages/TermsPage';
 function App() {
   return (
     <HashRouter>
-      <div className="flex flex-col min-h-screen text-ivory-white">
+      <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow bg-[#F8F5F0]">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/menu" element={<MenuPage />} />
